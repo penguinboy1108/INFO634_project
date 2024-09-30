@@ -1,0 +1,197 @@
+---
+title: "Project"
+author: "Anju Sambasivan"
+date: "2024-09-07"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+```
+
+```{r}
+data <- read_csv("data.csv", show_col_types = FALSE)
+
+```
+
+```{r}
+head(data)
+```
+```{r}
+str(data)
+```
+```{r}
+library(readr)
+library(dplyr)
+library(knitr)
+
+# Read the data
+data <- read_csv("data.csv", show_col_types = FALSE)
+
+# Extract structure information
+data_structure <- data.frame(
+  Column_Names = names(data),
+ # DataType = sapply(data, class),
+  stringsAsFactors = FALSE
+)
+
+# Display the structure in a table format
+kable(data_structure)
+```
+```{r}
+summary(data)
+```
+```{r}
+# Change into factor Categorical
+data$AnzsocDivision <- as.factor(data$AnzsocDivision)
+data$LocationType <- as.factor(data$LocationType)
+data$TerritorialAuthority <- as.factor(data$TerritorialAuthority)
+data$PoliceArea <- as.factor(data$PoliceArea)
+data$Date <- as.Date(data$Date, format = "%d %B %Y")
+data$PersonOrOrganization <- as.factor(data$PersonOrOrganization)
+data$AgeGroup <- as.factor(data$AgeGroup)
+data$ROVDivision <- as.factor(data$ROVDivision)
+```
+
+```{r}
+str(data)
+```
+```{r}
+summary(data)
+```
+
+```{r}
+# Sort the data by Victimisations in descending order
+location_summary <- location_summary[order(-location_summary$Victimisations),  ]
+
+# Select the top 10 locations
+top_10_locations <- head(location_summary, 10)
+
+ggplot(top_10_locations, aes(x=reorder(LocationType, -Victimisations), y=Victimisations)) + 
+  geom_bar(stat="identity", fill="steelblue") + 
+  coord_flip() + 
+  labs(title="Top 10 Victimisations by Location Type", x="Location Type", y="Victimisations") + 
+  theme(legend.position = "none")  # Remove the legend if not needed
+
+
+```
+
+```{r}
+
+age_group_summary <- aggregate(Victimisations ~ AgeGroup, data=data, sum)
+ggplot(age_group_summary, aes(x=reorder(AgeGroup, -Victimisations), y=Victimisations, fill=AgeGroup)) + 
+  geom_bar(stat="identity") + 
+  labs(title="Victimisations by Age Group", x="Age Group", y="Victimisations") + 
+  theme(legend.position = "none")
+
+
+```
+
+```{r}
+
+anzsoc_summary <- aggregate(Victimisations ~ AnzsocDivision, data=data, sum)
+ggplot(anzsoc_summary, aes(x=reorder(AnzsocDivision, -Victimisations), y=Victimisations, fill=AnzsocDivision)) + 
+  geom_bar(stat="identity") + 
+  coord_flip() + 
+  labs(title="Victimisations by Anzsoc Division", x="Anzsoc Division", y="Victimisations") + 
+  theme(legend.position = "none")
+
+
+```
+
+```{r}
+# Sort the territorial_summary dataframe by Victimisations in descending order and select top 10
+top_10_territorial <- territorial_summary[order(-territorial_summary$Victimisations), ][1:10, ]
+
+# Plotting the top 10 Territorial Authorities
+ggplot(top_10_territorial, aes(x=reorder(TerritorialAuthority, -Victimisations), y=Victimisations, fill=TerritorialAuthority)) + 
+  geom_bar(stat="identity") + 
+  coord_flip() + 
+  labs(title="Top 10 Territorial Authorities by Victimisations", x="Territorial Authority", y="Victimisations") + 
+  theme(legend.position = "none")
+
+
+```
+
+```{r}
+
+# Summarize victimisations by ROVDivision
+rovdivision_summary <- aggregate(Victimisations ~ ROVDivision, data=data, sum)
+
+# Sort the summary to get the top ROVDivisions
+rovdivision_summary <- rovdivision_summary[order(-rovdivision_summary$Victimisations), ]
+
+# Display the ROVDivision with the most victimisations
+head(rovdivision_summary, 10)
+
+# Plot the victimisations by ROVDivision
+ggplot(rovdivision_summary, aes(x=reorder(ROVDivision, -Victimisations), y=Victimisations, fill=ROVDivision)) + 
+  geom_bar(stat="identity") + 
+  coord_flip() + 
+  labs(title="Victimisations by ROVDivision", x="ROVDivision", y="Victimisations") + 
+  theme(legend.position = "none")
+
+
+```
+
+```{r}
+# Summarize victimisations by PoliceArea
+policearea_summary <- aggregate(Victimisations ~ PoliceArea, data=data, sum)
+
+# Sort the summary to get the top PoliceAreas
+policearea_summary <- policearea_summary[order(-policearea_summary$Victimisations), ]
+
+# Subset the data to the top 10 PoliceAreas
+top_10_policeareas <- head(policearea_summary, 10)
+
+# Plot the victimisations for the top 10 PoliceAreas
+ggplot(top_10_policeareas, aes(x=reorder(PoliceArea, -Victimisations), y=Victimisations, fill=PoliceArea)) + 
+  geom_bar(stat="identity") + 
+  coord_flip() + 
+  labs(title="Top 10 Police Areas by Victimisations", x="Police Area", y="Victimisations") + 
+  theme(legend.position = "none")
+
+
+```
+
+
+```{r}
+# Summarize victimisations by PoliceArea
+policearea_summary <- aggregate(Victimisations ~ PoliceArea, data=data, sum)
+
+# Sort the summary to get the bottom PoliceAreas
+policearea_summary <- policearea_summary[order(policearea_summary$Victimisations), ]
+
+# Subset the data to the bottom 10 PoliceAreas
+bottom_10_policeareas <- head(policearea_summary, 10)
+
+# Plot the victimisations for the bottom 10 PoliceAreas
+ggplot(bottom_10_policeareas, aes(x=reorder(PoliceArea, Victimisations), y=Victimisations, fill=PoliceArea)) + 
+  geom_bar(stat="identity") + 
+  coord_flip() + 
+  labs(title="Bottom 10 Police Areas by Victimisations", x="Police Area", y="Victimisations") + 
+  theme(legend.position = "none")
+
+```
+
+```{r}
+# Summarize victimisations by PersonOrOrganization
+personorg_summary <- aggregate(Victimisations ~ PersonOrOrganization, data=data, sum)
+
+# Plot the victimisations by PersonOrOrganization
+ggplot(personorg_summary, aes(x=reorder(PersonOrOrganization, -Victimisations), y=Victimisations, fill=PersonOrOrganization)) + 
+  geom_bar(stat="identity") + 
+  labs(title="Victimisations by Person or Organization", x="Person or Organization", y="Victimisations") + 
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+```
+
+
+

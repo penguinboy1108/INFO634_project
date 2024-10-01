@@ -2,6 +2,7 @@
 library(readxl)
 library(dplyr)
 library(ggplot2)
+library(tidyr)
 
 # Load the data from the Excel file
 file_path <- "data.xlsx"
@@ -36,3 +37,48 @@ crime_with_unidentified_percentage %>%
 
 # save as CSV 
 write.csv(crime_with_unidentified_percentage, "crime_with_unidentified_percentage.csv", row.names = FALSE)
+
+
+# draw unidentified percentage bar chart
+ggplot(crime_with_unidentified_percentage, aes(x = reorder(TerritorialAuthority, -unidentified_percentage), y = unidentified_percentage)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  coord_flip() +  # 让条形图水平显示
+  labs(title = "unidentified percentage in Territorial Authority", 
+       x = "TerritorialAuthority", 
+       y = "unidentified_percentage") +
+  theme_minimal()
+
+
+# Create a crosstab showing crime locations and crime types in different regions
+crime_location_type_table <- data %>%
+  group_by(TerritorialAuthority, LocationType, AnzsocDivision) %>%
+  summarise(total_victimisations = sum(Victimisations)) %>%
+  pivot_wider(names_from = AnzsocDivision, values_from = total_victimisations, values_fill = list(total_victimisations = 0))
+
+# View Crosstab
+head(crime_location_type_table)
+
+# Save the crosstab as a CSV file
+write.csv(crime_location_type_table, "crime_location_type_table.csv", row.names = FALSE)
+
+# To simplify the graph, we only selected the areas with the most crimes for analysis.
+top_regions <- data %>%
+  group_by(TerritorialAuthority) %>%
+  summarise(total_victimisations = sum(Victimisations)) %>%
+  top_n(5, total_victimisations) %>%
+  pull(TerritorialAuthority)
+
+# Filter the data for the first 5 regions
+filtered_data <- data %>%
+  filter(TerritorialAuthority %in% top_regions)
+
+# Create a heat map showing the relationship between crime location and crime type
+ggplot(filtered_data, aes(x = LocationType, y = AnzsocDivision, fill = Victimisations)) +
+  geom_tile() +
+  facet_wrap(~TerritorialAuthority) +
+  scale_fill_gradient(low = "white", high = "red") +
+  labs(title = "relationship between Location Type and ANZSOC Division", 
+       x = "Location Type", 
+       y = "ANZSOC Division") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))

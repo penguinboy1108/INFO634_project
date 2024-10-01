@@ -5,33 +5,14 @@ date: "2024-09-07"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(tidyverse)
-
-```
-
-```{r}
-data <- read_csv("data.csv", show_col_types = FALSE)
-
-```
-
-```{r}
-head(data)
-```
-```{r}
-str(data)
-```
 ```{r}
 library(readr)
 library(dplyr)
 library(knitr)
+library(tidyverse)
 
 # Read the data
-data <- read_csv("data.csv", show_col_types = FALSE)
+data <- read_csv("ARG_raw_data.csv", show_col_types = FALSE)
 
 # Extract structure information
 data_structure <- data.frame(
@@ -43,9 +24,11 @@ data_structure <- data.frame(
 # Display the structure in a table format
 kable(data_structure)
 ```
+
 ```{r}
 summary(data)
 ```
+
 ```{r}
 # Change into factor Categorical
 data$AnzsocDivision <- as.factor(data$AnzsocDivision)
@@ -61,6 +44,7 @@ data$ROVDivision <- as.factor(data$ROVDivision)
 ```{r}
 str(data)
 ```
+
 ```{r}
 summary(data)
 ```
@@ -159,7 +143,6 @@ ggplot(top_10_policeareas, aes(x=reorder(PoliceArea, -Victimisations), y=Victimi
 
 ```
 
-
 ```{r}
 # Summarize victimisations by PoliceArea
 policearea_summary <- aggregate(Victimisations ~ PoliceArea, data=data, sum)
@@ -192,6 +175,3 @@ ggplot(personorg_summary, aes(x=reorder(PersonOrOrganization, -Victimisations), 
 
 
 ```
-
-
-

@@ -22,9 +22,11 @@ data <- read_csv("data.csv", show_col_types = FALSE)
 ```{r}
 head(data)
 ```
+
 ```{r}
 str(data)
 ```
+
 ```{r}
 library(readr)
 library(dplyr)
@@ -43,9 +45,11 @@ data_structure <- data.frame(
 # Display the structure in a table format
 kable(data_structure)
 ```
+
 ```{r}
 summary(data)
 ```
+
 ```{r}
 # Change into factor Categorical
 data$AnzsocDivision <- as.factor(data$AnzsocDivision)
@@ -61,6 +65,7 @@ data$ROVDivision <- as.factor(data$ROVDivision)
 ```{r}
 str(data)
 ```
+
 ```{r}
 summary(data)
 ```
@@ -172,7 +177,6 @@ ggplot(top_10_policeareas, aes(x=reorder(PoliceArea, -Victimisations), y=Victimi
 
 ```
 
-
 ```{r}
 # Summarize victimisations by PoliceArea
 policearea_summary <- aggregate(Victimisations ~ PoliceArea, data=data, sum)
@@ -205,6 +209,3 @@ ggplot(personorg_summary, aes(x=reorder(PersonOrOrganization, -Victimisations), 
 
 
 ```
-
-
-

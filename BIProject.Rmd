@@ -5,29 +5,8 @@ date: "2024-09-07"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r}
 library(tidyverse)
-
-```
-
-```{r}
-data <- read_csv("data.csv", show_col_types = FALSE)
-
-```
-
-```{r}
-head(data)
-```
-
-```{r}
-str(data)
-```
-
-```{r}
 library(readr)
 library(dplyr)
 library(knitr)

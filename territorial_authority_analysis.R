@@ -33,3 +33,6 @@ crime_with_unidentified_percentage <- unidentified_crimes_by_region %>%
 # Display the summary with the percentage of unidentified offenders
 crime_with_unidentified_percentage %>%
   arrange(desc(unidentified_percentage)) 
+
+# save as CSV 
+write.csv(crime_with_unidentified_percentage, "crime_with_unidentified_percentage.csv", row.names = FALSE)

@@ -82,3 +82,21 @@ ggplot(filtered_data, aes(x = LocationType, y = AnzsocDivision, fill = Victimisa
        y = "ANZSOC Division") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Summarize the number of victims per age group per region
+age_group_crime_summary <- data %>%
+  group_by(TerritorialAuthority, AgeGroup) %>%
+  summarise(total_victims = sum(Victimisations)) %>%
+  arrange(desc(total_victims))
+
+# View summary results
+head(age_group_crime_summary)
+
+# Create a bar chart showing the number of victims of different age groups in different regions
+ggplot(age_group_crime_summary, aes(x = TerritorialAuthority, y = total_victims, fill = AgeGroup)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Number of Victimizations targeting different age groups in different Territorial Authority", 
+       x = "Territorial Authority", 
+       y = "Victimizations") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))

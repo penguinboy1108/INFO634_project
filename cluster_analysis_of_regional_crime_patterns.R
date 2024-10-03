@@ -3,7 +3,6 @@ library(readxl)
 library(dplyr)
 library(ggplot2)
 library(tidyr)
-
 library(ggfortify)
 
 # Load the data from the Excel file

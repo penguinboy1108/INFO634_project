@@ -50,7 +50,6 @@ coef_data <- as.data.frame(coefficients)
 coef_data$Category <- rownames(coef_data)
 
 # Reshape data for ggplot
-library(tidyr)
 coef_long <- coef_data %>%
   gather(key = "Variable", value = "Coefficient", -Category)
 

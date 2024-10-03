@@ -54,3 +54,5 @@ autoplot(pca_result, data = region_crime_data, colour = 'cluster', label = TRUE,
          label.size = 3, main = "PCA of Crime Data by Clusters") +
   scale_color_manual(values = c("#FF6666", "#66B3FF", "#99FF99")) +
   theme_minimal()
+
+write.csv(region_crime_data, "region_crime_clusters.csv", row.names = FALSE)

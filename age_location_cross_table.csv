@@ -1,0 +1,181 @@
+"Var1","Var2","Freq"
+"0-9","Administrative/Professional",11
+"10-19","Administrative/Professional",66
+"20+","Administrative/Professional",2196
+"Not Applicable","Administrative/Professional",4203
+"Not Specified","Administrative/Professional",134
+"0-9","Agricultural",5
+"10-19","Agricultural",64
+"20+","Agricultural",1883
+"Not Applicable","Agricultural",3744
+"Not Specified","Agricultural",64
+"0-9","Agricultural Land",1
+"10-19","Agricultural Land",22
+"20+","Agricultural Land",1717
+"Not Applicable","Agricultural Land",1588
+"Not Specified","Agricultural Land",16
+"0-9","Agricultural Outbuilding",1
+"10-19","Agricultural Outbuilding",29
+"20+","Agricultural Outbuilding",1696
+"Not Applicable","Agricultural Outbuilding",5321
+"Not Specified","Agricultural Outbuilding",22
+"0-9","Banking",2
+"10-19","Banking",44
+"20+","Banking",925
+"Not Applicable","Banking",294
+"Not Specified","Banking",70
+"0-9","Car Park",2
+"10-19","Car Park",21
+"20+","Car Park",206
+"Not Applicable","Car Park",171
+"Not Specified","Car Park",228
+"0-9","Chemistry/Pharmacy",2
+"10-19","Chemistry/Pharmacy",13
+"20+","Chemistry/Pharmacy",342
+"Not Applicable","Chemistry/Pharmacy",2301
+"Not Specified","Chemistry/Pharmacy",38
+"0-9","Community Location N.E.C.",23
+"10-19","Community Location N.E.C.",161
+"20+","Community Location N.E.C.",929
+"Not Applicable","Community Location N.E.C.",669
+"Not Specified","Community Location N.E.C.",18
+"0-9","Community Location N.F.D.",87
+"10-19","Community Location N.F.D.",781
+"20+","Community Location N.F.D.",4275
+"Not Applicable","Community Location N.F.D.",4158
+"Not Specified","Community Location N.F.D.",3362
+"0-9","Conveyance In Transit",180
+"10-19","Conveyance In Transit",1452
+"20+","Conveyance In Transit",6175
+"Not Applicable","Conveyance In Transit",457
+"Not Specified","Conveyance In Transit",324
+"0-9","Dwelling - Non-Private",257
+"10-19","Dwelling - Non-Private",1197
+"20+","Dwelling - Non-Private",13425
+"Not Applicable","Dwelling - Non-Private",4411
+"Not Specified","Dwelling - Non-Private",659
+"0-9","Dwelling - Private",15042
+"10-19","Dwelling - Private",28480
+"20+","Dwelling - Private",139272
+"Not Applicable","Dwelling - Private",17320
+"Not Specified","Dwelling - Private",4315
+"0-9","Dwelling Land",299
+"10-19","Dwelling Land",2495
+"20+","Dwelling Land",52260
+"Not Applicable","Dwelling Land",20705
+"Not Specified","Dwelling Land",1024
+"0-9","Dwelling N.F.D.",4072
+"10-19","Dwelling N.F.D.",11884
+"20+","Dwelling N.F.D.",51986
+"Not Applicable","Dwelling N.F.D.",8035
+"Not Specified","Dwelling N.F.D.",7224
+"0-9","Dwelling Outbuilding",31
+"10-19","Dwelling Outbuilding",244
+"20+","Dwelling Outbuilding",6195
+"Not Applicable","Dwelling Outbuilding",15212
+"Not Specified","Dwelling Outbuilding",94
+"0-9","Educational",1124
+"10-19","Educational",8386
+"20+","Educational",7936
+"Not Applicable","Educational",10020
+"Not Specified","Educational",644
+"0-9","Health",141
+"10-19","Health",325
+"20+","Health",7605
+"Not Applicable","Health",2870
+"Not Specified","Health",574
+"0-9","Justice",30
+"10-19","Justice",390
+"20+","Justice",4231
+"Not Applicable","Justice",180
+"Not Specified","Justice",828
+"0-9","Manufacturing",0
+"10-19","Manufacturing",41
+"20+","Manufacturing",796
+"Not Applicable","Manufacturing",2366
+"Not Specified","Manufacturing",9
+"0-9","Not Applicable",83
+"10-19","Not Applicable",80
+"20+","Not Applicable",295
+"Not Applicable","Not Applicable",105
+"Not Specified","Not Applicable",597
+"0-9","Open Space",149
+"10-19","Open Space",2766
+"20+","Open Space",12637
+"Not Applicable","Open Space",2810
+"Not Specified","Open Space",346
+"0-9","Other Location N.E.C.",7
+"10-19","Other Location N.E.C.",736
+"20+","Other Location N.E.C.",3559
+"Not Applicable","Other Location N.E.C.",4985
+"Not Specified","Other Location N.E.C.",168
+"0-9","Other Location N.F.D.",72
+"10-19","Other Location N.F.D.",1663
+"20+","Other Location N.F.D.",18900
+"Not Applicable","Other Location N.F.D.",18573
+"Not Specified","Other Location N.F.D.",2338
+"0-9","Outbuilding/Residential Land",0
+"10-19","Outbuilding/Residential Land",6
+"20+","Outbuilding/Residential Land",68
+"Not Applicable","Outbuilding/Residential Land",78
+"Not Specified","Outbuilding/Residential Land",75
+"0-9","Public Place",674
+"10-19","Public Place",8224
+"20+","Public Place",40134
+"Not Applicable","Public Place",8606
+"Not Specified","Public Place",2848
+"0-9","Recreational",430
+"10-19","Recreational",4513
+"20+","Recreational",13391
+"Not Applicable","Recreational",5376
+"Not Specified","Recreational",507
+"0-9","Religious",38
+"10-19","Religious",202
+"20+","Religious",1361
+"Not Applicable","Religious",2215
+"Not Specified","Religious",41
+"0-9","Residential Location N.F.D.",72
+"10-19","Residential Location N.F.D.",366
+"20+","Residential Location N.F.D.",4560
+"Not Applicable","Residential Location N.F.D.",5478
+"Not Specified","Residential Location N.F.D.",118
+"0-9","Retail N.E.C.",319
+"10-19","Retail N.E.C.",4874
+"20+","Retail N.E.C.",38104
+"Not Applicable","Retail N.E.C.",44688
+"Not Specified","Retail N.E.C.",6957
+"0-9","Retail N.F.D.",65
+"10-19","Retail N.F.D.",950
+"20+","Retail N.F.D.",8192
+"Not Applicable","Retail N.F.D.",2032
+"Not Specified","Retail N.F.D.",109
+"0-9","Service Station",22
+"10-19","Service Station",452
+"20+","Service Station",7032
+"Not Applicable","Service Station",32163
+"Not Specified","Service Station",3328
+"0-9","Street/Footpath",1050
+"10-19","Street/Footpath",23598
+"20+","Street/Footpath",87221
+"Not Applicable","Street/Footpath",13844
+"Not Specified","Street/Footpath",4901
+"0-9","Suppressed",79
+"10-19","Suppressed",473
+"20+","Suppressed",4156
+"Not Applicable","Suppressed",1989
+"Not Specified","Suppressed",1134
+"0-9","Terminal",9
+"10-19","Terminal",429
+"20+","Terminal",1528
+"Not Applicable","Terminal",466
+"Not Specified","Terminal",92
+"0-9","Unspecified Location",904
+"10-19","Unspecified Location",2085
+"20+","Unspecified Location",11830
+"Not Applicable","Unspecified Location",8883
+"Not Specified","Unspecified Location",54364
+"0-9","Warehousing/Storage",2
+"10-19","Warehousing/Storage",45
+"20+","Warehousing/Storage",1143
+"Not Applicable","Warehousing/Storage",3659
+"Not Specified","Warehousing/Storage",27

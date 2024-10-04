@@ -25,7 +25,7 @@ data$AnzsocDivision <- as.factor(data$AnzsocDivision)
 data$DateColumn <- as.Date(data$Date)
 
 # Get the current date and calculate the date for 5 years ago
-five_years_ago <- Sys.Date() - years(1)
+five_years_ago <- Sys.Date() - years(5)
 
 # Filter the data for the past 5 years
 recent_data <- data %>% filter(DateColumn >= five_years_ago)

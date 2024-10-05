@@ -1,0 +1,139 @@
+---
+title: "Analysis"
+author: "Anju Sambasivan"
+date: "2024-10-05"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+
+# Load the dataset
+data2 <- read.csv("data2.csv")
+
+# Convert the Date column to Date type
+data2$Date <- as.Date(data2$Date, format = "%d/%m/%Y")
+
+# Line plot for Victimisations over time
+ggplot(data2, aes(x = Date)) +
+  geom_line(stat = "count", color = "blue") +
+  labs(title = "Victimisations Over Time", x = "Date", y = "Number of Victimisations")
+
+
+```
+
+```{r}
+
+
+
+# Plot number of victimisations over time for each AnzsocDivision
+ggplot(data2, aes(x = Date, fill = AnzsocDivision)) +
+  geom_histogram(binwidth = 30) +
+  labs(title = "Victimisations by Crime Type Over Time", x = "Date", y = "Number of Victimisations") +
+  theme_minimal()
+
+```
+```{r}
+# Plot for ROVDivision and Victimisations
+ggplot(data2, aes(x = ROVDivision, fill = Victimisations)) +
+  geom_bar(position = "fill") +
+  labs(title = "Proportion of Victimisations by ROV Division", x = "ROV Division", y = "Proportion") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+```{r}
+# Create a matrix of ROVDivision and AnzsocDivision
+rov_crime_matrix <- table(data2$ROVDivision, data2$AnzsocDivision)
+
+# Convert the matrix into a data frame for ggplot2
+rov_crime_df <- as.data.frame(as.table(rov_crime_matrix))
+
+# Plotting a heatmap using ggplot2
+ggplot(rov_crime_df, aes(Var1, Var2, fill = Freq)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "lightblue", high = "darkblue") +  # Blue color scale for better contrast
+  labs(title = "Heatmap of Offender vs. Crime Type",
+       x = "ROV Division (Offender Identified / Not Identified)", 
+       y = "Crime Type (AnzsocDivision)", 
+       fill = "Frequency") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 10),
+        axis.text.y = element_text(size = 8),
+        plot.title = element_text(hjust = 0.5, size = 10, face = "bold"))
+
+```
+```{r}
+# Bar plot of crime types (AnzsocDivision) by Age Group
+ggplot(data2, aes(x = AgeGroup, fill = AnzsocDivision)) +
+  geom_bar(position = "fill") +
+  labs(
+    title = "Proportion of Crime Types by Age Group",
+    x = "Age Group",
+    y = "Proportion",
+    fill = "Crime Type"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+```{r}
+
+# Bar plot: Victimisations by Age Group
+ggplot(data2, aes(x = AgeGroup, fill = AgeGroup)) +
+  geom_bar() +
+  labs(
+    title = "Victimisations by Age Group",
+    x = "Age Group",
+    y = "Count"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +  # Rotate x-axis labels
+  coord_flip()  # Flip axes for better readability
+
+
+```
+```{r}
+
+# Load necessary libraries
+library(dplyr)
+
+
+# Summarize the data to get counts of crimes by LocationType and AnzsocDivision
+crime_summary <- data2 %>%
+  group_by(LocationType, AnzsocDivision) %>%
+  summarise(Count = n()) %>%
+  ungroup() %>%
+  arrange(desc(Count))
+
+# Get the top 10 rows based on the highest crime count
+top_10_crimes <- crime_summary %>%
+  top_n(10, wt = Count)
+
+#  Plot the top 10 crimes by loctaion and crime type
+ggplot(top_10_crimes, aes(x = reorder(AnzsocDivision, -Count), y = Count, fill = LocationType)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Top 10 Crimes by Location and Crime Type",
+    x = "Crime Type (AnzsocDivision)",
+    y = "Number of Crimes"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +  # Rotate x-axis labels for read
+  scale_fill_brewer(palette = "Set3")  # Use a color palette for visuals
+
+```
+```{r}
+
+ggplot(data2, aes(x = AgeGroup, y = Victimisations)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of Victimizations by Age Group",
+       x = "Age Group",
+       y = "Number of Victimizations")
+
+
+```
+
+
+
